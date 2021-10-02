@@ -19,19 +19,19 @@
                 <strong class="text-main"></strong><br>
 
 
-                {{ translate('Shop name') }} :     <a href="/shop/{{ $card->user->shop->slug }}"> {{$card->shop_name_ar}} </a> <br>
+                {{ translate('Shop name') }} :     <a href="/shop/{{ @$card->user->shop->slug }}"> {{@$card->shop_name_ar}} </a> <br>
                 <br>
                 
-                {{translate('logo')}} : 	<img src="{{ uploaded_asset($card->logo) }}" alt="{{translate('Brand')}}" class="h-80px">
+                {{translate('logo')}} : 	<img src="{{ uploaded_asset(@$card->logo) }}" alt="{{translate('Brand')}}" class="h-80px">
                 <br>
                 <br>
-                {{ translate('Email') }} :       {{$card->email}}<br>
+                {{ translate('Email') }} :       {{@$card->email}}<br>
                 <br>
-                {{translate('User phone')}} : 	{{ $card->phone }}<br>
+                {{translate('User phone')}} : 	{{ @$card->phone }}<br>
                 <br>
-                {{translate('business card color')}} : 	<input type="text" redeonly value="{{$card->color}}" style="background:{{$card->color}}"><br>
+                {{translate('business card color')}} : 	<input type="text" redeonly value="{{@$card->color}}" style="background:{{@$card->color}}"><br>
                 <br>
-                {{translate('Shop Address')}} : 	{{ $card->address}}<br>
+                {{translate('Shop Address')}} : 	{{ @$card->address}}<br>
                
                 
             </address>
