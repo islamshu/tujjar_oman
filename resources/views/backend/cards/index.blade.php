@@ -29,7 +29,7 @@
                     <tr>
                         <td>{{ ($key+1) + ($cards->currentPage() - 1)*$cards->perPage() }}</td>
                         
-                        <td >{{ $card->shop_name_ar }}</td>
+                        <td >{{ @$card->shop_name_ar }}</td>
                       @if ($card->veiw)
                       <td ><span class="badge badge-inline badge-success">view</span></td>
                       @else
