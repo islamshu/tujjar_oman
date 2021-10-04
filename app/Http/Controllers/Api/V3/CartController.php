@@ -30,7 +30,6 @@ class CartController extends BaseController
             $cart_count = $user->carts()->count();
         } else {
             $coo = request()->cookie('cookes');
-            dd($coo);
             $cart_count = Cart::where('cokkeies', $coo)->count();
         }
         if ($cart_count == null) {
