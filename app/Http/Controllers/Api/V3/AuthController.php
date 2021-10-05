@@ -76,7 +76,6 @@ class AuthController extends BaseController
 
     public function logout(Request $request)
     {
-        dd('dd');
         $request->user()->fcm_token = null;
         $request->user()->save();
         $request->user()->token()->revoke();
