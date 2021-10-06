@@ -78,9 +78,9 @@ class AuthController extends BaseController
     {
         $request->user()->fcm_token = null;
         $request->user()->save();
-        dd($request->user());
+        // dd($request->user());
         $request->user()->token()->revoke();
-        if(auth('api')->user()){
+        if(auth('api')->check()){
             return $this->sendError(translate('Something went wrong'));
         }
 
