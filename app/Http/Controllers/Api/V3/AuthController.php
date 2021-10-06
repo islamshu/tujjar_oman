@@ -79,8 +79,11 @@ class AuthController extends BaseController
         $request->user()->fcm_token = null;
         $request->user()->save();
         $request->user()->token()->revoke();
+        if(auth('api')->user()){
+            return $this->sendError(translate('Something went wrong'));
+        }
 
-        return $this->sendError(translate('Successfully logged out'));
+        return $this->sendResponse('Success',translate('Successfully logged out'));
     }
 
     public function socialLogin(Request $request)
