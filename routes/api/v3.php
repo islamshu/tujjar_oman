@@ -6,6 +6,7 @@ Route::prefix('v3/auth')->namespace('Api\V3')->name('v3.')->middleware(['changeL
     Route::post('password/create', 'PasswordResetController@create');
     Route::post('password/reset', 'PasswordResetController@reset');
     Route::middleware('auth:api')->group(function () {
+        Route::get('logout', 'AuthController@logout');
         Route::get('user', 'AuthController@user');
         Route::post('password/change', 'PasswordResetController@change');
     });
@@ -80,7 +81,6 @@ Route::prefix('v3')->namespace('Api\V3')->name('v3.')->middleware(['changeLangua
 });
 
 Route::prefix('v3')->namespace('Api\V3')->name('v3.')->middleware(['is_login', 'changeLanguage','header_request_env'])->group(function () {
-    Route::get('logout', 'AuthController@logout');
     Route::get('get_noification/{id}', 'GeneralSettingController@get_noification_single')->name('notfy_single');
     Route::get('notofication', 'GeneralSettingController@get_noification');
     Route::get('wallet/history', 'WalletController@walletRechargeHistory');
