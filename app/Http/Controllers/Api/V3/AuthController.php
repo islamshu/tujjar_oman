@@ -80,11 +80,11 @@ class AuthController extends BaseController
     {
   
 
-        
-        $request->user()->fcm_token = null;
-        $request->user()->save();
+        $user =  auth('api')->user();
+        $user->fcm_token = null;
+        $user->save();
         // dd($request->user());
-        $request->user()->token()->revoke();
+         $user->token()->revoke();
     //   do
 
         return $this->sendResponse('Success',translate('Successfully logged out'));
