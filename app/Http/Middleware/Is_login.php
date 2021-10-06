@@ -22,7 +22,7 @@ class Is_login
                 return $next($request);
             }
             $response = ['success' => false];
-            $response['data'] = trans('error.no user');
+            $response['data'] = translate('need to login');
             return response()->json($response , 404);
           
     }
