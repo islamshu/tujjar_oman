@@ -6,9 +6,12 @@ Route::prefix('v3/auth')->namespace('Api\V3')->name('v3.')->middleware(['changeL
     Route::post('password/create', 'PasswordResetController@create');
     Route::post('password/reset', 'PasswordResetController@reset');
     Route::middleware('auth:api')->group(function () {
-        Route::get('logout', 'AuthController@logout');
         Route::get('user', 'AuthController@user');
         Route::post('password/change', 'PasswordResetController@change');
+    });
+    Route::middleware(['is_login', 'changeLanguage','header_request_env'])->group(function () {
+        Route::get('logout', 'AuthController@logout');
+
     });
 });
 
