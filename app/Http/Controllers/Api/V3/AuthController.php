@@ -13,6 +13,8 @@ use App\Http\Controllers\Api\BaseController as BaseController;
 use App\Models\V3\User;
 use App\Notifications\EmailVerificationNotification;
 
+use function Matrix\trace;
+
 class AuthController extends BaseController
 {
     public function signup(Request $request)
@@ -76,6 +78,9 @@ class AuthController extends BaseController
 
     public function logout(Request $request)
     {
+        if(auth()->check()){
+
+        
         $request->user()->fcm_token = null;
         $request->user()->save();
         // dd($request->user());
@@ -83,7 +88,10 @@ class AuthController extends BaseController
     //   do
 
         return $this->sendResponse('Success',translate('Successfully logged out'));
+    }else{
+        return $this->sendError(translate('Something went wrong'));
     }
+}
 
     public function socialLogin(Request $request)
     {
