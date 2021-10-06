@@ -17,26 +17,13 @@ class Is_login
     public function handle($request, Closure $next)
     {
             $request->headers->set('Accept', 'application/json');
-
-           if (auth('api')->check() ) {
-        return $next($request);
-    } else {
-        return 'aa';
-    }
-        
-        
-        
-    //   if(auth('api')->check()){
+            if (auth('api')->check()) {
+       
+                return $next($request);
+            }
+            $response = ['success' => false];
+            $response['data'] = trans('error.no user');
+            return response()->json($response , 404);
           
-    //         return $next($request);
-    //     }
-    //     else{
-    //          $response = [
-    //         'success' => false ,
-    //         'message' => 'need to login'
-    //     ];
-        
-    //     return response()->json($response , 404);
-    //     }
     }
 }
