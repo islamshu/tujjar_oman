@@ -81,6 +81,7 @@ class AuthController extends BaseController
         // dd($request->user());
         $request->user()->token()->revoke();
         if(auth('api')->check()){
+            dd(auth('api')->user());
             return $this->sendError(translate('Something went wrong'));
         }
 
