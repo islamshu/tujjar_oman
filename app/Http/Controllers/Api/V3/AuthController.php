@@ -12,6 +12,7 @@ use App\Models\V3\Session;
 use App\Http\Controllers\Api\BaseController as BaseController;
 use App\Models\V3\User;
 use App\Notifications\EmailVerificationNotification;
+use DB;
 
 use function Matrix\trace;
 
@@ -78,17 +79,20 @@ class AuthController extends BaseController
 
     public function logout(Request $request)
     {
-  
 
-        $user =  auth('api')->user();
+        $user = auth('api')->user();
         $user->fcm_token = null;
         $user->save();
-        // dd($request->user());
-         $user->token()->revoke();
-    //   do
+       $accessToken= $user->token();
+        // ->revoke();
+        DB::table('oauth_refresh_tokens')
+        ->where('access_token_id', $accessToken->id)
+        ->update([
+            'revoked' => true
+        ]);
 
         return $this->sendResponse('Success',translate('Successfully logged out'));
-   
+    
 }
 
     public function socialLogin(Request $request)
