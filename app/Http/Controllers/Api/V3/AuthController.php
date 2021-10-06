@@ -80,7 +80,7 @@ class AuthController extends BaseController
         $request->user()->save();
         // dd($request->user());
         $request->user()->token()->revoke();
-      
+    //   do
 
         return $this->sendResponse('Success',translate('Successfully logged out'));
     }
