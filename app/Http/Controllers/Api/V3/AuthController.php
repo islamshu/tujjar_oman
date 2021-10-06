@@ -78,7 +78,7 @@ class AuthController extends BaseController
 
     public function logout(Request $request)
     {
-        if(auth()->check()){
+        if(auth('api')->check()){
 
         
         $request->user()->fcm_token = null;
