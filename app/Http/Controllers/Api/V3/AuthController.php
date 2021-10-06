@@ -78,7 +78,7 @@ class AuthController extends BaseController
 
     public function logout(Request $request)
     {
-        if(auth('api')->check()){
+  
 
         
         $request->user()->fcm_token = null;
@@ -88,9 +88,7 @@ class AuthController extends BaseController
     //   do
 
         return $this->sendResponse('Success',translate('Successfully logged out'));
-    }else{
-        return $this->sendError(translate('Something went wrong'));
-    }
+   
 }
 
     public function socialLogin(Request $request)
