@@ -52,7 +52,7 @@ class CartController extends BaseController
             $carts = $user->carts;
         } else {
             $coo = request()->cookie('cookes');
-            $carts = Cart::where('cokkeies', $coo)->get();
+            $carts = Cart::where('cokkeies', null)->get();
             dd($carts);
         }
         if ($carts == null) {
