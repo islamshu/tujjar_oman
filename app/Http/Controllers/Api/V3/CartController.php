@@ -53,6 +53,7 @@ class CartController extends BaseController
         } else {
             $coo = request()->cookie('cookes');
             $carts = Cart::where('cokkeies', $coo)->get();
+            dd($carts);
         }
         if ($carts == null) {
             return $this->sendError('لا يوجد منتجات بالسلة', 'لا يوجد منتجات بالسلة');
