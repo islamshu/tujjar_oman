@@ -36,7 +36,6 @@ class CartController extends BaseController
                 $cart_count = Cart::where('cokkeies', $coo)->count();
             }   
         }
-        dd($cart_count);
         if ($cart_count == null) {
             return $this->sendError('لا يوجد لديك سلة', 'لا يوجد لديك سلة');
         }
