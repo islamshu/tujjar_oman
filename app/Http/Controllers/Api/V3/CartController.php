@@ -32,8 +32,9 @@ class CartController extends BaseController
             $coo = request()->cookie('cookes');
             if($coo == null){
                 $cart_count = null; 
+            }else{
+                $cart_count = Cart::where('cokkeies', $coo)->count();
             }
-            $cart_count = Cart::where('cokkeies', $coo)->count();
             
         }
         if ($cart_count == null) {
