@@ -10,9 +10,9 @@ class AddressController extends BaseController
 {
     public function addresses()
     {
-        $addresses['data'] = auth('api')->user()->addresses;
-        if ($addresses['data']) {
-            $addresses['data'] = AddressResource::collection($addresses['data']);
+        $addresses = auth('api')->user()->addresses;
+        if ($addresses) {
+            $addresses = AddressResource::collection($addresses);
         }
         return $this->sendResponse($addresses, translate('this is all addresses .'));
     }
